@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIXON — Curated Brand & Commerce</title>
+  <meta name="description" content="Pixon은 패션·라이프스타일 브랜드와 소비자를 연결하는 큐레이션 커머스 플랫폼입니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --px-cream: #F7F4EE;
+      --px-black: #1A1814;
+      --px-dark: #2C2A26;
+      --px-mid: #7A7670;
+      --px-light: #C8C4BC;
+      --px-accent: #B8956A;
+      --px-border: rgba(26,24,20,0.1);
+      --px-bg-alt: #F0EDE5;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--px-cream);
+      color: var(--px-black);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 48px;
+      border-bottom: 0.5px solid var(--px-border);
+      background: var(--px-cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--px-black);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--px-accent); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+
+    nav ul li a {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--px-mid);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+
+    nav ul li a:hover { color: var(--px-black); }
+
+    .nav-cta {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border: 0.5px solid var(--px-black);
+      color: var(--px-black);
+      background: transparent;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .nav-cta:hover {
+      background: var(--px-black);
+      color: var(--px-cream);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 88vh;
+      border-bottom: 0.5px solid var(--px-border);
+    }
+
+    .hero-left {
+      padding: 80px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 0.5px solid var(--px-border);
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--px-accent);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 0.5px;
+      background: var(--px-accent);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--px-black);
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--px-accent);
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      color: var(--px-mid);
+      line-height: 1.8;
+      max-width: 380px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background: var(--px-black);
+      color: var(--px-cream);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-weight: 400;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--px-dark); }
+
+    .btn-ghost {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--px-black);
+      border: 0.5px solid var(--px-border);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 400;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-ghost:hover { border-color: var(--px-black); }
+
+    .hero-right {
+      background: var(--px-black);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .hero-bg-text span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 200px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.05);
+      letter-spacing: -0.05em;
+      line-height: 1;
+      user-select: none;
+    }
+
+    .hero-stats {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .stat {
+      background: var(--px-black);
+      padding: 28px;
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+    }
+
+    /* ── PILLARS ── */
+    .section {
+      padding: 96px 48px;
+      border-bottom: 0.5px solid var(--px-border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--px-accent);
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--px-black);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: var(--px-mid);
+      max-width: 280px;
+      text-align: right;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--px-border);
+    }
+
+    .pillar {
+      background: var(--px-cream);
+      padding: 48px 36px;
+      transition: background 0.2s;
+    }
+
+    .pillar:hover { background: var(--px-bg-alt); }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--px-light);
+      line-height: 1;
+      margin-bottom: 32px;
+    }
+
+    .pillar-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--px-black);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .pillar-desc {
+      font-size: 13px;
+      color: var(--px-mid);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── BRANDS ── */
+    .brands-section {
+      background: var(--px-black);
+      padding: 80px 48px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    }
+
+    .brands-label {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .brands-grid {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .brand-item {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .brand-item:hover { color: rgba(255,255,255,0.6); }
+
+    /* ── B2B ── */
+    .b2b-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 0.5px solid var(--px-border);
+    }
+
+    .b2b-left {
+      padding: 96px 48px;
+      border-right: 0.5px solid var(--px-border);
+    }
+
+    .b2b-right {
+      padding: 96px 48px;
+      background: var(--px-bg-alt);
+    }
+
+    .b2b-list {
+      margin-top: 40px;
+    }
+
+    .b2b-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 0.5px solid var(--px-border);
+    }
+
+    .b2b-item-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      color: var(--px-accent);
+      min-width: 24px;
+      font-weight: 400;
+      margin-top: 2px;
+    }
+
+    .b2b-item-text {
+      font-size: 13px;
+      color: var(--px-dark);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .b2b-item-text strong {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 96px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
+      border-bottom: 0.5px solid var(--px-border);
+    }
+
+    .contact-info p.contact-desc {
+      font-size: 14px;
+      color: var(--px-mid);
+      line-height: 1.8;
+      margin-top: 24px;
+      font-weight: 300;
+    }
+
+    .contact-email-block {
+      margin-top: 40px;
+      padding-top: 32px;
+      border-top: 0.5px solid var(--px-border);
+    }
+
+    .contact-email-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--px-mid);
+      margin-bottom: 8px;
+    }
+
+    .contact-email {
+      font-size: 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      color: var(--px-black);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-field label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--px-mid);
+      font-weight: 400;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      padding: 12px 16px;
+      background: transparent;
+      border: 0.5px solid var(--px-border);
+      color: var(--px-black);
+      outline: none;
+      transition: border-color 0.2s;
+      font-weight: 300;
+      border-radius: 0;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--px-accent);
+    }
+
+    .form-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7670' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+
+    .form-field textarea {
+      resize: none;
+      height: 100px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      color: var(--px-mid);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--px-mid);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--px-black); }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--px-light);
+      letter-spacing: 0.05em;
+      font-weight: 300;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 20px 24px;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      nav ul { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left {
+        padding: 60px 24px;
+        border-right: none;
+        border-bottom: 0.5px solid var(--px-border);
+      }
+
+      h1 { font-size: 48px; }
+
+      .hero-right { min-height: 300px; }
+
+      .section { padding: 60px 24px; }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .section-sub { text-align: left; max-width: 100%; }
+
+      .pillars { grid-template-columns: 1fr; }
+
+      .brands-section { padding: 60px 24px; }
+
+      .brands-grid { gap: 32px; }
+
+      .b2b-section { grid-template-columns: 1fr; }
+
+      .b2b-left {
+        padding: 60px 24px;
+        border-right: none;
+        border-bottom: 0.5px solid var(--px-border);
+      }
+
+      .b2b-right { padding: 60px 24px; }
+
+      .contact-section {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        padding: 60px 24px;
+      }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 40px 24px;
+      }
+
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">PIX<span>O</span>N</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#b2b">B2B</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">파트너십 문의</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Brand &amp; Commerce</div>
+      <h1>Curated<br>for the<br><em>discerning</em><br>few.</h1>
+      <p class="hero-desc">
+        Pixon은 패션·라이프스타일 브랜드와 소비자를 연결하는 큐레이션 커머스 플랫폼입니다. 브랜드 총판부터 B2B 공급까지 원스톱으로 제공합니다.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">쇼핑하기</a>
+        <a href="#contact" class="btn-ghost">브랜드 파트너십</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-bg-text"><span>Px</span></div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">B2C</div>
+          <div class="stat-label">큐레이션 커머스</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">B2B</div>
+          <div class="stat-label">브랜드 총판·공급</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">F&amp;B</div>
+          <div class="stat-label">식품·음료 카테고리</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Gift</div>
+          <div class="stat-label">기프티콘·상품권</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="section" id="about">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Our Pillars</div>
+        <h2>세 가지<br>핵심 사업</h2>
+      </div>
+      <p class="section-sub">
+        패션의 안목과 유통의 전문성을 결합하여 브랜드와 소비자 모두에게 가치를 전달합니다.
+      </p>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Curated Commerce</div>
+        <p class="pillar-desc">패션·뷰티·라이프스타일 브랜드를 엄선하여 온라인 커머스 채널을 통해 소비자에게 직접 연결합니다. 스마트스토어, 카카오쇼핑 등 주요 채널 운영.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Brand Distribution</div>
+        <p class="pillar-desc">국내외 브랜드의 총판 및 유통 파트너로서 기업 복지몰, 소셜커머스 등 B2B 채널에 상품을 공급합니다. 안정적인 볼륨 거래를 기반으로 합니다.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Gift &amp; Voucher</div>
+        <p class="pillar-desc">디지털 상품권·기프티콘 유통 전문 채널. 기업 선물, 임직원 복지, 프로모션용 대량 공급을 전문으로 합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND CATEGORIES -->
+  <div class="brands-section" id="brands">
+    <div class="brands-label">취급 카테고리</div>
+    <div class="brands-grid">
+      <div class="brand-item">Fashion</div>
+      <div class="brand-item">Beauty</div>
+      <div class="brand-item">F&amp;B</div>
+      <div class="brand-item">Lifestyle</div>
+      <div class="brand-item">Gift Card</div>
+      <div class="brand-item">Wellness</div>
+    </div>
+  </div>
+
+  <!-- B2B -->
+  <div class="b2b-section" id="b2b">
+    <div class="b2b-left">
+      <div class="section-label">For Brands</div>
+      <h2>브랜드<br>파트너십</h2>
+      <div class="b2b-list">
+        <div class="b2b-item">
+          <div class="b2b-item-num">01</div>
+          <div class="b2b-item-text">
+            <strong>채널 확장</strong>
+            기존 채널 외 온라인 커머스, 기업 복지몰 등 새로운 판로를 개척해 드립니다.
+          </div>
+        </div>
+        <div class="b2b-item">
+          <div class="b2b-item-num">02</div>
+          <div class="b2b-item-text">
+            <strong>위탁 운영</strong>
+            재고 부담 없이 위탁 판매 구조로 브랜드의 유통 비용을 최소화합니다.
+          </div>
+        </div>
+        <div class="b2b-item">
+          <div class="b2b-item-num">03</div>
+          <div class="b2b-item-text">
+            <strong>B2B 대량 공급</strong>
+            기업 고객 대상 대량 발주, 기프티콘 발행, 단체 구매 수요를 연결합니다.
+          </div>
+        </div>
+        <div class="b2b-item">
+          <div class="b2b-item-num">04</div>
+          <div class="b2b-item-text">
+            <strong>마케팅 지원</strong>
+            큐레이션 콘텐츠 제작과 소셜 채널 운영으로 브랜드 인지도를 높여드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="b2b-right">
+      <div class="section-label">For Business</div>
+      <h2>기업<br>구매 채널</h2>
+      <div class="b2b-list">
+        <div class="b2b-item">
+          <div class="b2b-item-num">—</div>
+          <div class="b2b-item-text">
+            <strong>임직원 복지몰 납품</strong>
+            주요 복지몰 플랫폼과 연동, 안정적인 재고와 빠른 납품
+          </div>
+        </div>
+        <div class="b2b-item">
+          <div class="b2b-item-num">—</div>
+          <div class="b2b-item-text">
+            <strong>기념일·명절 선물 대행</strong>
+            기업 행사, 명절 시즌 단체 구매 전문 상담 및 공급
+          </div>
+        </div>
+        <div class="b2b-item">
+          <div class="b2b-item-num">—</div>
+          <div class="b2b-item-text">
+            <strong>디지털 상품권 발행</strong>
+            카카오 기프티콘, 모바일 상품권 대량 발행 지원
+          </div>
+        </div>
+        <div class="b2b-item">
+          <div class="b2b-item-num">—</div>
+          <div class="b2b-item-text">
+            <strong>전용 계약 단가</strong>
+            거래 규모에 따른 볼륨 할인 및 전용 공급가 협의
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-info">
+      <div class="section-label">Get in Touch</div>
+      <h2>파트너십<br>문의하기</h2>
+      <p class="contact-desc">
+        브랜드 입점, 총판 계약, 기업 구매 문의 모두 환영합니다.<br>
+        빠른 시일 내에 담당자가 연락드립니다.
+      </p>
+      <div class="contact-email-block">
+        <p class="contact-email-label">Email</p>
+        <p class="contact-email">hello@pixon.co.kr</p>
+      </div>
+    </div>
+
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label for="name">이름</label>
+          <input type="text" id="name" name="name" placeholder="홍길동" required>
+        </div>
+        <div class="form-field">
+          <label for="company">회사명</label>
+          <input type="text" id="company" name="company" placeholder="(주)브랜드코리아">
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email" placeholder="contact@company.com" required>
+      </div>
+      <div class="form-field">
+        <label for="type">문의 유형</label>
+        <select id="type" name="type">
+          <option>브랜드 입점 · 총판 계약</option>
+          <option>기업 대량 구매</option>
+          <option>디지털 상품권 발행</option>
+          <option>기타 문의</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="message">메시지</label>
+        <textarea id="message" name="message" placeholder="문의 내용을 자유롭게 적어주세요."></textarea>
+      </div>
+      <button type="submit" class="btn-primary form-submit">문의 보내기</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">PIXON</div>
+    <div class="footer-links">
+      <a href="#">이용약관</a>
+      <a href="#">개인정보처리방침</a>
+      <a href="#">사업자정보</a>
+    </div>
+    <div class="footer-copy">© 2026 Pixon. All rights reserved.</div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      btn.textContent = '전송 완료 ✓';
+      btn.style.background = '#B8956A';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = '문의 보내기';
+        btn.style.background = '';
+        btn.disabled = false;
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
