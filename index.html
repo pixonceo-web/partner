@@ -18,7 +18,415 @@
       --px-accent: #B8956A;
       --px-border: rgba(26,24,20,0.1);
       --px-bg-alt: #F0EDE5;
+    }<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PIXON</title>
+  <meta name="description" content="픽슨 — 브랜드 커머스 플랫폼">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:    #F5F3EF;
+      --black: #111110;
+      --gray:  #888884;
+      --line:  rgba(17,17,16,0.1);
+      --light: #E2DFD8;
+      --white: #FFFFFF;
     }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+      background: var(--bg);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      height: 60px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo-mark {
+      width: 32px; height: 32px;
+      background: var(--black); border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-mark svg { width: 20px; height: 20px; }
+    .logo-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 24px; letter-spacing: 0.1em; color: var(--black); line-height: 1;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; font-weight: 400; color: var(--gray);
+      text-decoration: none; letter-spacing: 0.02em; transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 9px 20px;
+      background: var(--black); color: var(--bg);
+      border: none; border-radius: 4px;
+      cursor: pointer; text-decoration: none; transition: opacity .15s;
+    }
+    .nav-cta:hover { opacity: .75; }
+
+    /* HERO */
+    .hero {
+      min-height: calc(100vh - 60px);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 40px;
+      border-bottom: 1px solid var(--line);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; right: -20px; bottom: -80px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 340px; line-height: 1;
+      color: rgba(17,17,16,0.04);
+      user-select: none; pointer-events: none; letter-spacing: -0.02em;
+    }
+    .eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray);
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--black); }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 10vw, 130px);
+      line-height: .93; letter-spacing: .02em; color: var(--black);
+      max-width: 820px; margin-bottom: 36px;
+    }
+    .hero-sub {
+      font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--gray);
+      max-width: 420px; margin-bottom: 52px;
+    }
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-fill {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 13px 28px;
+      background: var(--black); color: var(--bg);
+      border: none; border-radius: 4px;
+      cursor: pointer; text-decoration: none; display: inline-block; transition: opacity .15s;
+    }
+    .btn-fill:hover { opacity: .75; }
+    .btn-stroke {
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase;
+      padding: 13px 28px;
+      background: transparent; color: var(--black);
+      border: 1.5px solid var(--black); border-radius: 4px;
+      cursor: pointer; text-decoration: none; display: inline-block; transition: all .15s;
+    }
+    .btn-stroke:hover { background: var(--black); color: var(--bg); }
+
+    /* TICKER */
+    .ticker {
+      background: var(--black); padding: 14px 0; overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+    .ticker-track {
+      display: flex; white-space: nowrap;
+      animation: tick 24s linear infinite;
+    }
+    .ticker-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 14px; letter-spacing: .14em;
+      color: rgba(255,255,255,.3); padding: 0 24px; flex-shrink: 0;
+    }
+    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* CATEGORIES */
+    .cats { padding: 80px 40px; border-bottom: 1px solid var(--line); }
+    .sec-label {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--gray);
+      display: flex; align-items: center; gap: 10px; margin-bottom: 48px;
+    }
+    .sec-label::before { content: ''; width: 20px; height: 1.5px; background: var(--black); }
+    .cat-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--line);
+    }
+    .cat-card {
+      background: var(--bg); padding: 40px 28px; transition: background .2s;
+    }
+    .cat-card:hover { background: #ECEAE4; }
+    .cat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px; color: var(--light); line-height: 1;
+      margin-bottom: 20px; letter-spacing: .04em;
+    }
+    .cat-name { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .cat-desc { font-size: 13px; color: var(--gray); line-height: 1.75; }
+
+    /* CONTACT */
+    .contact {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .contact-left {
+      padding: 80px 40px; border-right: 1px solid var(--line);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .contact-left h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 5vw, 72px);
+      line-height: .95; letter-spacing: .02em; color: var(--black);
+      margin-bottom: 24px;
+    }
+    .contact-left p {
+      font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--gray);
+      margin-bottom: 40px;
+    }
+    .email-block { padding-top: 28px; border-top: 1px solid var(--line); }
+    .email-label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--gray); margin-bottom: 6px;
+    }
+    .email-val { font-size: 16px; font-weight: 500; color: var(--black); }
+    .contact-right { padding: 80px 40px; background: #ECEAE4; }
+    .form { display: flex; flex-direction: column; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--gray);
+    }
+    .field input, .field select, .field textarea {
+      font-family: 'DM Sans', 'Noto Sans KR', sans-serif;
+      font-size: 14px; font-weight: 300;
+      padding: 12px 14px;
+      background: var(--white); border: 1px solid var(--line); border-radius: 4px;
+      color: var(--black); outline: none; transition: border-color .15s;
+      -webkit-appearance: none; appearance: none; width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--black); }
+    .field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888884' stroke-width='1.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 12px center;
+      padding-right: 32px; cursor: pointer;
+    }
+    .field textarea { resize: none; height: 100px; line-height: 1.6; }
+
+    /* FOOTER */
+    footer {
+      padding: 32px 40px;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px; letter-spacing: .1em; color: var(--gray);
+    }
+    .footer-biz {
+      font-size: 12px; color: var(--gray); line-height: 1.9; text-align: center;
+    }
+    .footer-biz span { color: var(--light); margin: 0 6px; }
+    .footer-nav { display: flex; gap: 20px; }
+    .footer-nav a {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gray); text-decoration: none; transition: color .15s;
+    }
+    .footer-nav a:hover { color: var(--black); }
+    .footer-copy {
+      width: 100%; text-align: center; font-size: 11px; color: var(--light);
+      padding-top: 20px; border-top: 1px solid var(--line);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 860px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 20px; }
+      .cats { padding: 60px 20px; }
+      .cat-grid { grid-template-columns: 1fr 1fr; }
+      .contact { grid-template-columns: 1fr; }
+      .contact-left { padding: 60px 20px; border-right: none; border-bottom: 1px solid var(--line); }
+      .contact-right { padding: 60px 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 28px 20px; flex-direction: column; align-items: center; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .cat-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 20 20" fill="none">
+        <rect x="1.5" y="1.5" width="17" height="17" rx="2" stroke="#F5F3EF" stroke-width="1.2"/>
+        <path d="M5.5 6h5.5a2.5 2.5 0 010 5H5.5V6z" fill="#F5F3EF"/>
+        <line x1="5.5" y1="14" x2="9" y2="14" stroke="#F5F3EF" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <span class="logo-name">PIXON</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">소개</a></li>
+    <li><a href="#categories">카테고리</a></li>
+    <li><a href="#contact">문의</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">파트너십 문의</a>
+</nav>
+
+<section class="hero" id="about">
+  <div class="hero-bg">Px</div>
+  <div class="eyebrow">Brand &amp; Commerce</div>
+  <h1>CURATED<br>BRANDS,<br>CONNECTED.</h1>
+  <p class="hero-sub">픽슨은 패션·라이프스타일 브랜드와 기업 고객을 연결하는 큐레이션 커머스 플랫폼입니다.</p>
+  <div class="hero-btns">
+    <a href="#categories" class="btn-fill">카테고리 보기</a>
+    <a href="#contact" class="btn-stroke">파트너십 문의</a>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">FASHION &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">BEAUTY &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">F&amp;B &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">LIFESTYLE &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">GIFT CARD &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">WELLNESS &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">ACCESSORIES &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">FASHION &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">BEAUTY &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">F&amp;B &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">LIFESTYLE &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">GIFT CARD &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">WELLNESS &nbsp;✦&nbsp;</span>
+    <span class="ticker-item">ACCESSORIES &nbsp;✦&nbsp;</span>
+  </div>
+</div>
+
+<section class="cats" id="categories">
+  <div class="sec-label">Categories</div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <div class="cat-num">01</div>
+      <div class="cat-name">Fashion</div>
+      <p class="cat-desc">패션·의류 브랜드 큐레이션 및 총판 유통</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-num">02</div>
+      <div class="cat-name">Beauty</div>
+      <p class="cat-desc">뷰티·스킨케어 브랜드 온·오프라인 공급</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-num">03</div>
+      <div class="cat-name">F&amp;B</div>
+      <p class="cat-desc">식품·음료 브랜드 기업 복지몰 납품</p>
+    </div>
+    <div class="cat-card">
+      <div class="cat-num">04</div>
+      <div class="cat-name">Gift &amp; Voucher</div>
+      <p class="cat-desc">디지털 상품권·기프티콘 대량 발행 공급</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-left">
+    <div class="sec-label">Get in Touch</div>
+    <h2>PARTNER<br>WITH US</h2>
+    <p>브랜드 입점, 총판 계약, 기업 구매 문의 모두 환영합니다. 빠른 시일 내 담당자가 연락드립니다.</p>
+    <div class="email-block">
+      <div class="email-label">Email</div>
+      <div class="email-val">hello@pixon.kr</div>
+    </div>
+  </div>
+  <div class="contact-right">
+    <form class="form" id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div class="form-row">
+        <div class="field">
+          <label for="name">이름 *</label>
+          <input type="text" id="name" name="name" placeholder="홍길동" required>
+        </div>
+        <div class="field">
+          <label for="company">회사명</label>
+          <input type="text" id="company" name="company" placeholder="(주)회사">
+        </div>
+      </div>
+      <div class="field">
+        <label for="email">이메일 *</label>
+        <input type="email" id="email" name="email" placeholder="contact@company.com" required>
+      </div>
+      <div class="field">
+        <label for="phone">연락처</label>
+        <input type="tel" id="phone" name="phone" placeholder="010-0000-0000">
+      </div>
+      <div class="field">
+        <label for="type">문의 유형</label>
+        <select id="type" name="type">
+          <option>브랜드 입점 · 총판 계약</option>
+          <option>기업 대량 구매</option>
+          <option>디지털 상품권 발행</option>
+          <option>기타 문의</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="msg">문의 내용</label>
+        <textarea id="msg" name="message" placeholder="문의 내용을 입력해주세요."></textarea>
+      </div>
+      <button type="submit" class="btn-fill" id="submitBtn" style="align-self:flex-start;margin-top:4px">문의 보내기</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">PIXON</div>
+  <div class="footer-biz">
+    상호명: 픽슨<span>|</span>대표자: 정명희<span>|</span>사업자등록번호: 추후 업데이트<span>|</span>이메일: hello@pixon.kr
+  </div>
+  <nav class="footer-nav">
+    <a href="#">이용약관</a>
+    <a href="#">개인정보처리방침</a>
+  </nav>
+  <div class="footer-copy">© 2026 Pixon. All rights reserved.</div>
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const btn  = document.getElementById('submitBtn');
+  form.addEventListener('submit', function(e) {
+    if (form.action.includes('YOUR_FORM_ID')) {
+      e.preventDefault();
+      btn.textContent = '전송되었습니다 ✓';
+      btn.style.opacity = '.6';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = '문의 보내기';
+        btn.style.opacity = '1';
+        btn.disabled = false;
+        form.reset();
+      }, 3000);
+    }
+  });
+</script>
+</body>
+</html>
+
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
